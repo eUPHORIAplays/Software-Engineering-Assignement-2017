@@ -12,41 +12,15 @@ namespace WindowsFormsApplication2
 {
     public partial class Form1 : Form
     {
-        public bool logOut = false;
-
         public Form1()
         {
             InitializeComponent();
-            
+               
         }
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            CloseCancel(e);
-        }
-
-        public void CloseCancel(FormClosingEventArgs e)
-        {
-
-            if (logOut == false)
-            {
-                const string message = "Are you sure that you would like to exit?";
-                const string caption = "Attention";
-                var result = MessageBox.Show(message, caption,
-                                 MessageBoxButtons.YesNo,
-                                 MessageBoxIcon.Question);
-
-                e.Cancel = (result == DialogResult.No);
-            }
-          
-            
-
-        }
-        
 
         private void Form1_Load(object sender, EventArgs e)
         {
             radioButtonID.Checked = true;
-            
         }
 
         private void radioButtonID_CheckedChanged(object sender, EventArgs e)
@@ -77,20 +51,7 @@ namespace WindowsFormsApplication2
 
         private void logOffBut_Click(object sender, EventArgs e)
         {
-            const string message = "Are you sure that you would like to log out?";
-            const string caption = "Log Out";
-            var result = MessageBox.Show(message, caption,
-                             MessageBoxButtons.YesNo,
-                             MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                logOut = true;
-                this.Close();
-                
-                LoggInScreen logInForm = new LoggInScreen();
-                logInForm.Show();
-            }
+            UIManager.Instance.logOffBut_ClickUi(e);
         }
     }
 }

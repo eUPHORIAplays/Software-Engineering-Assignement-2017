@@ -16,11 +16,8 @@ namespace WindowsFormsApplication2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            UIManager.Instance.callLoginScreen();
             
-            Application.Run(new LoggInScreen());
-            
-
-
         }
     }
 }

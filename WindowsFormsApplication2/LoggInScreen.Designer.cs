@@ -37,7 +37,7 @@
             // 
             // confirmButton
             // 
-            this.confirmButton.Location = new System.Drawing.Point(177, 240);
+            this.confirmButton.Location = new System.Drawing.Point(178, 168);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(87, 29);
             this.confirmButton.TabIndex = 0;
