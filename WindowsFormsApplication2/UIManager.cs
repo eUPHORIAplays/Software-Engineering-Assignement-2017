@@ -14,6 +14,7 @@ namespace WindowsFormsApplication2
 
         private Form1 mainForm = new Form1();
         private LoggInScreen myLoggInScreen = new LoggInScreen();
+        private User activeUser;
 
         private static readonly UIManager instance = new UIManager();
 
@@ -94,6 +95,32 @@ namespace WindowsFormsApplication2
                 mainForm.FormClosing -= Form_FormClosing;
                 Application.Exit();
             }
+        }
+
+        public bool ClickLogIn(string userName, string password)
+        {
+            string sql = @"SELECT * FROM Users WHERE Username = '" + userName + "'AND Password = '" + password +"'";
+            DataSet ds = DBManager.getDBConnectionInstance().getDataSet(sql);
+            
+
+            if (ds.Tables[0].Rows.Count == 1)
+            {
+                
+                UIManager.Instance.activeUser = new User(ds);
+
+                return true;
+            }
+            else if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Multiple Entries with the same username and password");
+                Console.ReadLine();
+                return false;
+            }
+             
         }
     }
 }

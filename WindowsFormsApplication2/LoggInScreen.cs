@@ -19,10 +19,32 @@ namespace WindowsFormsApplication2
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            UIManager.Instance.swapVisibility();
-            passwordTxtBox.Text = "";
+
+
+            if (UIManager.Instance.ClickLogIn(usernameTxtBox.Text, passwordTxtBox.Text) == true)
+            {
+                UIManager.Instance.swapVisibility();
+                passwordTxtBox.Text = "";
+                invalidTextBox.Visible = false;
+            }
+            else
+            {
+                invalidTextBox.Visible = true;
+
+            }
+            
         }
 
-        
+        private void showPassCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (showPassCheckBox.Checked)
+            {
+                passwordTxtBox.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                passwordTxtBox.UseSystemPasswordChar = true;
+            }
+        }
     }
 }

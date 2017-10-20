@@ -33,6 +33,8 @@
             this.password = new System.Windows.Forms.Label();
             this.usernameTxtBox = new System.Windows.Forms.TextBox();
             this.passwordTxtBox = new System.Windows.Forms.TextBox();
+            this.invalidTextBox = new System.Windows.Forms.Label();
+            this.showPassCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // confirmButton
@@ -65,23 +67,48 @@
             // 
             // usernameTxtBox
             // 
-            this.usernameTxtBox.Location = new System.Drawing.Point(215, 65);
+            this.usernameTxtBox.Location = new System.Drawing.Point(180, 65);
             this.usernameTxtBox.Name = "usernameTxtBox";
             this.usernameTxtBox.Size = new System.Drawing.Size(160, 20);
             this.usernameTxtBox.TabIndex = 3;
             // 
             // passwordTxtBox
             // 
-            this.passwordTxtBox.Location = new System.Drawing.Point(215, 121);
+            this.passwordTxtBox.Location = new System.Drawing.Point(180, 118);
             this.passwordTxtBox.Name = "passwordTxtBox";
             this.passwordTxtBox.Size = new System.Drawing.Size(160, 20);
             this.passwordTxtBox.TabIndex = 4;
+            this.passwordTxtBox.UseSystemPasswordChar = true;
+            // 
+            // invalidTextBox
+            // 
+            this.invalidTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidTextBox.ForeColor = System.Drawing.Color.Red;
+            this.invalidTextBox.Location = new System.Drawing.Point(118, 170);
+            this.invalidTextBox.Name = "invalidTextBox";
+            this.invalidTextBox.Size = new System.Drawing.Size(201, 27);
+            this.invalidTextBox.TabIndex = 5;
+            this.invalidTextBox.Text = "Invalid Username or Password. Please try again.";
+            this.invalidTextBox.Visible = false;
+            // 
+            // showPassCheckBox
+            // 
+            this.showPassCheckBox.AutoSize = true;
+            this.showPassCheckBox.Location = new System.Drawing.Point(347, 121);
+            this.showPassCheckBox.Name = "showPassCheckBox";
+            this.showPassCheckBox.Size = new System.Drawing.Size(53, 17);
+            this.showPassCheckBox.TabIndex = 6;
+            this.showPassCheckBox.Text = "Show";
+            this.showPassCheckBox.UseVisualStyleBackColor = true;
+            this.showPassCheckBox.CheckedChanged += new System.EventHandler(this.showPassCheckBox_CheckedChanged);
             // 
             // LoggInScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 342);
+            this.Controls.Add(this.showPassCheckBox);
+            this.Controls.Add(this.invalidTextBox);
             this.Controls.Add(this.passwordTxtBox);
             this.Controls.Add(this.usernameTxtBox);
             this.Controls.Add(this.password);
@@ -101,5 +128,7 @@
         private System.Windows.Forms.Label password;
         private System.Windows.Forms.TextBox usernameTxtBox;
         private System.Windows.Forms.TextBox passwordTxtBox;
+        private System.Windows.Forms.Label invalidTextBox;
+        private System.Windows.Forms.CheckBox showPassCheckBox;
     }
 }
