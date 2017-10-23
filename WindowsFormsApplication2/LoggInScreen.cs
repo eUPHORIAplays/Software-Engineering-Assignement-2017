@@ -12,9 +12,27 @@ namespace WindowsFormsApplication2
 {
     public partial class LoggInScreen : Form
     {
+        
+
+
         public LoggInScreen()
         {
             InitializeComponent();
+        }
+
+        public void LoggInScreen_Load(object sender, EventArgs e)
+        {
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+
+            // no larger than screen size
+            this.MaximumSize = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height - 30);
+            this.AutoSize = true;
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            foreach (Control c in this.Controls)
+            {
+                c.Anchor = AnchorStyles.None;
+            }
+            this.MaximizeBox = false;
         }
 
         private void confirmButton_Click(object sender, EventArgs e)
@@ -44,6 +62,14 @@ namespace WindowsFormsApplication2
             else
             {
                 passwordTxtBox.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void logginScreen_SizeChanged(object sender, EventArgs e)
+        {
+            foreach(Control c in this.Controls)
+            {
+
             }
         }
     }

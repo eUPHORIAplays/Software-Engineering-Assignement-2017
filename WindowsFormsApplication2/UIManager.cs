@@ -12,7 +12,7 @@ namespace WindowsFormsApplication2
     public sealed class UIManager
     {
 
-        private Form1 mainForm = new Form1();
+        private MainForm mainForm = new MainForm();
         private LoggInScreen myLoggInScreen = new LoggInScreen();
         private User activeUser;
 
@@ -37,10 +37,13 @@ namespace WindowsFormsApplication2
         public void callLoginScreen()
         {
             myLoggInScreen.FormClosing += Form_FormClosing;
+            
             mainForm.Visible = false;
             mainForm.FormClosing += Form_FormClosing;
             Application.Run(myLoggInScreen);   
         }
+
+        
 
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
         {
