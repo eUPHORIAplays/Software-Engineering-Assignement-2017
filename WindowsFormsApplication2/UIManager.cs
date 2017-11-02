@@ -156,7 +156,7 @@ namespace WindowsFormsApplication2
             }
             else
             {
-                Console.WriteLine("Multiple Entries with the same ID");
+                Console.WriteLine("Multiple Entries with the same credentials");
                 Console.ReadLine();
                 return false;
             }
