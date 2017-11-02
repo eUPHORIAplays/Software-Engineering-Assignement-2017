@@ -44,8 +44,6 @@ namespace WindowsFormsApplication2
             Application.Run(myLoggInScreen);   
         }
 
-        
-
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             CloseCancel(e);
@@ -105,38 +103,51 @@ namespace WindowsFormsApplication2
         {
             string sql = @"SELECT * FROM Patients WHERE name = '" + name + "'AND Address = '" + address + "'AND dateOfBirth = '" + dOb + "'";
             DataSet ds = DBManager.getDBConnectionInstance().getDataSet(sql);
-            
-
-            if (ds.Tables[0].Rows.Count == 1)
+            if (Utility.CheckFind(ds))
             {
-                
                 UIManager.Instance.activePatient = new Patient(ds);
-
                 return true;
             }
-            else if (ds.Tables[0].Rows.Count == 0)
-            {
-                return false;
-            }
-            else
-            {
-                Console.WriteLine("Multiple Entries with the same Name, Address, Date of Birth");
-                Console.ReadLine();
-                return false;
-            }
+            else return false;
+
         }
 
         internal bool ConfirmSearchPatientClick(string id)
         {
             string sql = @"SELECT * FROM Patients WHERE Id = '" + id + "'";
             DataSet ds = DBManager.getDBConnectionInstance().getDataSet(sql);
+            if (Utility.CheckFind(ds))
+            {
+                UIManager.Instance.activePatient = new Patient(ds);
+                return true;
+            }
+            else return false;
+        }
 
+        public bool ClickLogIn(string userName, string password)
+        {
+            
+            string sql = @"SELECT * FROM Users WHERE Username = '" + userName + "'AND Password = '" + password +"'";
+            DataSet ds = DBManager.getDBConnectionInstance().getDataSet(sql);
+            if (Utility.CheckFind(ds))
+            {
+                UIManager.Instance.activeUser = new User(ds);
+                return true;
+            }
+            else return false;
+           
+             
+        }
+
+        
+    }
+    public static class Utility
+    {
+        public static bool CheckFind(DataSet ds)
+        {
 
             if (ds.Tables[0].Rows.Count == 1)
             {
-
-                UIManager.Instance.activePatient = new Patient(ds);
-
                 return true;
             }
             else if (ds.Tables[0].Rows.Count == 0)
@@ -149,32 +160,6 @@ namespace WindowsFormsApplication2
                 Console.ReadLine();
                 return false;
             }
-        }
-
-        public bool ClickLogIn(string userName, string password)
-        {
-            string sql = @"SELECT * FROM Users WHERE Username = '" + userName + "'AND Password = '" + password +"'";
-            DataSet ds = DBManager.getDBConnectionInstance().getDataSet(sql);
-            
-
-            if (ds.Tables[0].Rows.Count == 1)
-            {
-                
-                UIManager.Instance.activeUser = new User(ds);
-
-                return true;
-            }
-            else if (ds.Tables[0].Rows.Count == 0)
-            {
-                return false;
-            }
-            else
-            {
-                Console.WriteLine("Multiple Entries with the same username and password");
-                Console.ReadLine();
-                return false;
-            }
-             
         }
     }
 }
