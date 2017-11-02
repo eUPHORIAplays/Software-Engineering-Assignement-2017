@@ -250,6 +250,7 @@
             this.confirmSearchbutton.TabIndex = 23;
             this.confirmSearchbutton.Text = "Confirm";
             this.confirmSearchbutton.UseVisualStyleBackColor = true;
+            this.confirmSearchbutton.Click += new System.EventHandler(this.confirmSearchbutton_Click);
             // 
             // confirmRegButton
             // 

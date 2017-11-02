@@ -15,6 +15,7 @@ namespace WindowsFormsApplication2
         private MainForm mainForm = new MainForm();
         private LoggInScreen myLoggInScreen = new LoggInScreen();
         private User activeUser;
+        private Patient activePatient;
 
         private static readonly UIManager instance = new UIManager();
 
@@ -97,6 +98,56 @@ namespace WindowsFormsApplication2
                 myLoggInScreen.FormClosing -= Form_FormClosing;
                 mainForm.FormClosing -= Form_FormClosing;
                 Application.Exit();
+            }
+        }
+        
+        internal bool ConfirmSearchPatientClick(string name, string address, string dOb)
+        {
+            string sql = @"SELECT * FROM Patients WHERE name = '" + name + "'AND Address = '" + address + "'AND dateOfBirth = '" + dOb + "'";
+            DataSet ds = DBManager.getDBConnectionInstance().getDataSet(sql);
+            
+
+            if (ds.Tables[0].Rows.Count == 1)
+            {
+                
+                UIManager.Instance.activePatient = new Patient(ds);
+
+                return true;
+            }
+            else if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Multiple Entries with the same Name, Address, Date of Birth");
+                Console.ReadLine();
+                return false;
+            }
+        }
+
+        internal bool ConfirmSearchPatientClick(string id)
+        {
+            string sql = @"SELECT * FROM Patients WHERE Id = '" + id + "'";
+            DataSet ds = DBManager.getDBConnectionInstance().getDataSet(sql);
+
+
+            if (ds.Tables[0].Rows.Count == 1)
+            {
+
+                UIManager.Instance.activePatient = new Patient(ds);
+
+                return true;
+            }
+            else if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Multiple Entries with the same ID");
+                Console.ReadLine();
+                return false;
             }
         }
 

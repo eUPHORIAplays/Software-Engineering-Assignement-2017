@@ -65,5 +65,26 @@ namespace WindowsFormsApplication2
         {
             UIManager.Instance.logOffBut_ClickUi(e);
         }
+
+        private void confirmSearchbutton_Click(object sender, EventArgs e)
+        {
+            
+            if (radioButtonID.Checked)
+            {
+                if (UIManager.Instance.ConfirmSearchPatientClick(iDtextBox.Text))
+                {
+                    System.Windows.MessageBox.Show("Active Patient saved");
+                }
+
+            }
+            else
+            {
+                if (UIManager.Instance.ConfirmSearchPatientClick(nametextBox.Text, addresstextBox.Text, dObtextBox.Text))
+                {
+                    System.Windows.MessageBox.Show("Active Patient saved");
+                }
+
+            }
+        }
     }
 }
