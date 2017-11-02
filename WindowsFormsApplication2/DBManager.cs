@@ -13,7 +13,7 @@ namespace WindowsFormsApplication2
         //attributes
         private static DBManager _instance;
 
-        private static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security = True; Connect Timeout = 30";
+        private static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database.mdf;Integrated Security=True;Connect Timeout=30";
 
         private SqlConnection connectioToDB;
 
