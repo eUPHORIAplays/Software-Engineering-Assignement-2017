@@ -47,7 +47,7 @@ namespace WindowsFormsApplication2
 
         internal DataSet ProjectSelectedDateToCalendar(string selectedDate)
         {
-            string sql = @"SELECT DISTINCT a.AppointmentTime, s.StaffMemberName, p.PatientName, a.AppointmentDate FROM Appointments a INNER JOIN StaffMembers s on a.StaffID = s.Id INNER JOIN Patients p on a.PatientID = p.Id WHERE a.AppointmentDate = '" + selectedDate + "'";
+            string sql = @"SELECT DISTINCT a.AppointmentTime, s.StaffMemberName, p.PatientName FROM Appointments a INNER JOIN StaffMembers s on a.StaffID = s.Id INNER JOIN Patients p on a.PatientID = p.Id WHERE a.AppointmentDate = '" + selectedDate + "'";
             DataSet ds = DBManager.getDBConnectionInstance().getDataSet(sql);
             return ds;
         }
