@@ -16,6 +16,7 @@ namespace WindowsFormsApplication2
         private LoggInScreen myLoggInScreen = new LoggInScreen();
         private User activeUser;
         private Patient activePatient;
+        private Calendar calendarForm;
 
         private static readonly UIManager instance = new UIManager();
 
@@ -42,6 +43,13 @@ namespace WindowsFormsApplication2
             mainForm.Visible = false;
             mainForm.FormClosing += Form_FormClosing;
             Application.Run(myLoggInScreen);   
+        }
+
+        internal DataSet ProjectSelectedDateToCalendar(string selectedDate)
+        {
+            string sql = @"SELECT DISTINCT a.AppointmentTime, s.StaffMemberName, p.PatientName, a.AppointmentDate FROM Appointments a INNER JOIN StaffMembers s on a.StaffID = s.Id INNER JOIN Patients p on a.PatientID = p.Id WHERE a.AppointmentDate = '" + selectedDate + "'";
+            DataSet ds = DBManager.getDBConnectionInstance().getDataSet(sql);
+            return ds;
         }
 
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
@@ -98,7 +106,13 @@ namespace WindowsFormsApplication2
                 Application.Exit();
             }
         }
-        
+
+        internal void showCalendar()
+        {
+            calendarForm = new Calendar();
+            calendarForm.ShowDialog();
+        }
+
         internal bool ConfirmSearchPatientClick(string name, string address, string dOb)
         {
             string sql = @"SELECT * FROM Patients WHERE name = '" + name + "'AND Address = '" + address + "'AND dateOfBirth = '" + dOb + "'";
