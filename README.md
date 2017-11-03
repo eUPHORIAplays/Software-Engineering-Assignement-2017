@@ -2,16 +2,30 @@
 (WIP - Work in Progress)
 
 Tasks:
-Login Form - DONE
 
-GUI - WIP
+Functionality > 
 
-Register a New Patient - TODO
+Login Form - DONE - RAZ
 
-Database - TODO
+Register a New Patient - TODO - SORIN
 
-Find a Patient - TODO
+Database - DONE - RAZ & ANDRE
 
-Apointments - TODO
+Find a Patient - DONE - RAZ
+
+Apointments - TODO 
+(make apointments,cancel them and change apointments, query apointments)
+
+Calendar - DONE - RAZ
+
+Patient info Box - TODO - GEDEON
+
+
+
+
+Appearance >
+
+GUI - WIP - ANDRE
+
 
 Please Edit the file when you complete or start any of the tasks or if you have more tasks to add feel free to do so
